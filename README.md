@@ -1,4 +1,4 @@
-# This project demonstrates how to use IoT Face Recognition APIs using python script
+This project demonstrates how to use IoT Face Recognition APIs using python script
 
 ## prepare environment
 - install python3
