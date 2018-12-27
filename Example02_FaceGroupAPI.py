@@ -25,13 +25,14 @@ proxies = {
 img_names = ['o-AUDREY-1', 'o-AUDREY-2', 'o-AUDREY-3', 'friends']
 files = {name: open("images/{}.jpg".format(name), "rb") for name in img_names}
 base64_data = {name: base64.b64encode(files[name].read()).decode('utf-8') for name in img_names}
+
+# prepare headers
 headers = {'Api-Key': args.api_key}
 
 '''
 1) POST /v0.2/FaceGroup
 create a FaceGroup
 '''
-
 create_group_url = '{}/v0.2/FaceGroup'
 data_dicts = {"groupName": "requests-test-group"}
 data = json.dumps(data_dicts)
