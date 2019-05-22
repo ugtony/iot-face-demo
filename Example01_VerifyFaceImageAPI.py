@@ -40,7 +40,7 @@ data = {
     "queryData":qdata,
     "candidateDataArray":cdata     
 }
-response = requests.post(url.format(server), headers = headers, data=json.dumps(data), proxies=proxies)
+response = requests.post(url.format(server), headers = headers, data=json.dumps(data), proxies=proxies, verify=False)
 print('response:')
 print(response.text)
 print('')

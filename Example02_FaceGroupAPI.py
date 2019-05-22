@@ -36,7 +36,7 @@ create a FaceGroup
 create_group_url = '{}/v0.2/FaceGroup'
 data_dicts = {"groupName": "requests-test-group"}
 data = json.dumps(data_dicts)
-response = requests.post(create_group_url.format(server), headers = headers, data=data, proxies=proxies)
+response = requests.post(create_group_url.format(server), headers = headers, data=data, proxies=proxies, verify=False)
 rdata = json.loads(response.text)
 print("===== 1) POST /v0.2/FaceGroup =====")
 print(rdata)
@@ -48,7 +48,7 @@ groupId = rdata['groupId']  #remember this for testing later
 get all FaceGroups
 '''
 get_facegroups_url = '{}/v0.2/FaceGroup'                                          
-response = requests.get(get_facegroups_url.format(server), headers = headers, proxies=proxies)
+response = requests.get(get_facegroups_url.format(server), headers = headers, proxies=proxies, verify=False)
 rdata = json.loads(response.text)
 print("===== 2) GET /v0.2/FaceGroup =====")
 print(rdata)
@@ -71,7 +71,7 @@ data = {
     "faceMetadata": "o-AUDREY-1"
 }
 data = json.dumps(data)
-response = requests.post(add_face_url.format(server, groupId), headers = headers, data=data, proxies=proxies)
+response = requests.post(add_face_url.format(server, groupId), headers = headers, data=data, proxies=proxies, verify=False)
 rdata = json.loads(response.text)                
 print("===== 3) POST /v0.2/FaceGroup/{groupId} =====")
 print(rdata)
@@ -83,7 +83,7 @@ groupedFaceId = rdata['groupedFaceId']
 get information a bout a FaceGroup
 '''
 get_facegroup_url = '{}/v0.2/FaceGroup/{}'                                            
-response = requests.get(get_facegroup_url.format(server, groupId), headers = headers, proxies=proxies)
+response = requests.get(get_facegroup_url.format(server, groupId), headers = headers, proxies=proxies, verify=False)
 rdata = json.loads(response.text)
 print("===== 4) GET /v0.2/FaceGroup/{groupId} =====")
 print(rdata)
@@ -106,7 +106,7 @@ data = {
     "allFaces": False
 }
 data = json.dumps(data)
-response = requests.post(match_face_url.format(server, groupId), headers = headers, data=data, proxies=proxies)
+response = requests.post(match_face_url.format(server, groupId), headers = headers, data=data, proxies=proxies, verify=False)
 rdata = json.loads(response.text)
 print("===== 5) POST /v0.2/FaceGroup/{groupId}/Match =====")
 print("TEST-1")
@@ -125,7 +125,7 @@ data = {
     "allFaces": True
 }
 data = json.dumps(data)
-response = requests.post(match_face_url.format(server, groupId), headers = headers, data=data, proxies=proxies)
+response = requests.post(match_face_url.format(server, groupId), headers = headers, data=data, proxies=proxies, verify=False)
 rdata = json.loads(response.text)
 print("TEST-2")
 print(rdata)
@@ -136,7 +136,7 @@ print()
 delete a face
 '''
 delete_face_url = '{}/v0.2/FaceGroup/{}/Face/{}'
-response = requests.delete(delete_face_url.format(server, groupId, groupedFaceId), headers = headers, proxies=proxies)
+response = requests.delete(delete_face_url.format(server, groupId, groupedFaceId), headers = headers, proxies=proxies, verify=False)
 rdata = json.loads(response.text)                
 print("===== 6) DELETE /v0.2/FaceGroup/{groupId}/Face/{groupedFaceId} =====")
 print(rdata)
@@ -147,7 +147,7 @@ print()
 delete a facegroup
 '''
 delete_group_url = '{}/v0.2/FaceGroup/{}'
-response = requests.delete(delete_group_url.format(server, groupId), headers=headers, data='', proxies=proxies)
+response = requests.delete(delete_group_url.format(server, groupId), headers=headers, data='', proxies=proxies, verify=False)
 rdata = json.loads(response.text)
 print("===== 7) DELETE /v0.2/FaceGroup/{groupId} =====")
 print(rdata)
